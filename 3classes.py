@@ -10,7 +10,9 @@ class SecondClass:
         return "Method in Second Class"
 
 class ThirdClass:
+    __slots__ = ()
+
     def __init__(self):
         print("This is the Third Class")
-    def another_method(self
+    def another_method(self):
         return "Method in Third Class"
