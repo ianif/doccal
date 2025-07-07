@@ -9,10 +9,12 @@ class SecondClass:
     def method(self):
         return "Method in Second Class"
 
+
 class ThirdClass:
     __slots__ = ()
 
     def __init__(self):
         print("This is the Third Class")
-    def another_method(self):
+    @staticmethod
+    def another_method():
         return "Method in Third Class"
