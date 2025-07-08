@@ -15,14 +15,19 @@ def book():
     date = data['date']
     time = data['time']
     doctor = data['doctor']
-    key = f"{date}_{time}_{doctor}"
+    who_is_this_guy = data['who_is_this_guy']
+    key = f"{date}_{time}_{doctor}_{who_is_this_guy}"
 
     if key in appointments:
         return jsonify({"status": "error", "message": "This slot is already booked."})
     else:
-        appointments[key] = True
-        return jsonify({"status": "success", "message": "Appointment booked successfully!"})
+        appointments[key] = {
+            'date': date,
+            'time': time,
+            'doctor': doctor,
+            'who_is_this_guy': who_is_this_guy
+        }
+        return jsonify({"status": "success", "message": "Appointment booked successfully! new pr"})
 
 if __name__ == '__main__':
     app.run(debug=True)
-
