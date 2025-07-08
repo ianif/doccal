@@ -1,3 +1,5 @@
+// Author: JOY
+
 const appointmentForm = document.getElementById('appointment-form');
 const doctorSelect = document.getElementById('doctor');
 const dateSelect = document.getElementById('date');
