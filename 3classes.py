@@ -2,7 +2,7 @@
 
 class FirstClass:
     def __init__(self):
-        print("This is the First Class"
+        print("This is the First Class")
 
 class SecondClass:
     def __init__(self):
@@ -12,7 +12,7 @@ class SecondClass:
         return "Method in Second Class"
 
 class ThirdClass:
-    __slots__ = ()
+    __slots__ = ()  # Use slots to reduce memory footprint
 
     def __init__(self):
         print("This is the Third Class")
