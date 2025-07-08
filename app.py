@@ -4,7 +4,7 @@ from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
 
-# In-memory data store for booked appointments
+# In-memory data store for booked appointments as a set for O(1) lookups
 appointments = set()
 
 @app.route('/')
@@ -21,10 +21,13 @@ def book():
     key = (date, time, doctor, who_is_this_guy)
 
     if key in appointments:
+        # Return error if slot already booked
         return jsonify({"status": "error", "message": "This slot is already booked."})
     else:
+        # Book the appointment
         appointments.add(key)
         return jsonify({"status": "success", "message": "Appointment booked successfully! new pr"})
 
 if __name__ == '__main__':
+    # Run app with threaded=True for handling multiple requests concurrently
     app.run(debug=True, threaded=True)
