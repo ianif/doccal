@@ -1,6 +1,6 @@
 class FirstClass:
     def __init__(self):
-        print("This is the First Class edited by github")
+        print("This is the First Class edited by github lalalala")
 
 class SecondClass:
     def __init__(self):
