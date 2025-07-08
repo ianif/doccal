@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, jsonify
 app = Flask(__name__)
 
 # In-memory data store for booked appointments
-appointments = {}
+appointments = set()
 
 @app.route('/')
 def index():
@@ -21,12 +21,7 @@ def book():
     if key in appointments:
         return jsonify({"status": "error", "message": "This slot is already booked."})
     else:
-        appointments[key] = {
-            'date': date,
-            'time': time,
-            'doctor': doctor,
-            'who_is_this_guy': who_is_this_guy
-        }
+        appointments.add(key)
         return jsonify({"status": "success", "message": "Appointment booked successfully! new pr"})
 
 if __name__ == '__main__':

@@ -18,22 +18,26 @@ form label {
   margin: 10px 0 5px;
 }
 
-form input, form select {
+form input, form select, button {
   width: 100%;
+  box-sizing: border-box;
+}
+
+form input, form select {
   padding: 8px;
   margin-bottom: 15px;
 }
 
 button {
-  width: 100%;
   padding: 10px;
   background-color: #007bff;
-  color: white;
+  color: #fff;
   border: none;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 #message {
   margin-top: 20px;
-  font-weight: bold;
+  font-weight: 700;
 }
