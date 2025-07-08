@@ -1,11 +1,11 @@
-# Author: JOY
-
 from flask import Flask, render_template, request, jsonify
+from threading import Lock
 
 app = Flask(__name__)
 
 # In-memory data store for booked appointments
 appointments = set()
+appointments_lock = Lock()
 
 @app.route('/')
 def index():
@@ -20,11 +20,12 @@ def book():
     who_is_this_guy = data['who_is_this_guy']
     key = (date, time, doctor, who_is_this_guy)
 
-    if key in appointments:
-        return jsonify({"status": "error", "message": "This slot is already booked."})
-    else:
-        appointments.add(key)
-        return jsonify({"status": "success", "message": "Appointment booked successfully! new pr"})
+    with appointments_lock:
+        if key in appointments:
+            return jsonify({"status": "error", "message": "This slot is already booked."})
+        else:
+            appointments.add(key)
+            return jsonify({"status": "success", "message": "Appointment booked successfully! new pr"})
 
 if __name__ == '__main__':
     app.run(debug=True, threaded=True)
