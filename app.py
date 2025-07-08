@@ -18,7 +18,8 @@ def book():
     time = data['time']
     doctor = data['doctor']
     who_is_this_guy = data['who_is_this_guy']
-    key = (date, time, doctor, who_is_this_guy)
+    # Use tuple of interned strings to optimize memory usage
+    key = (intern(date), intern(time), intern(doctor), intern(who_is_this_guy))
 
     if key in appointments:
         return jsonify({"status": "error", "message": "This slot is already booked."})
@@ -27,4 +28,5 @@ def book():
         return jsonify({"status": "success", "message": "Appointment booked successfully! new pr"})
 
 if __name__ == '__main__':
-    app.run(debug=True, threaded=True)
+    # Disable debug mode for better performance & use threaded for concurrent requests
+    app.run(debug=False, threaded=True)
