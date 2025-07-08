@@ -1,4 +1,4 @@
-# Author: JOY and IOANNA
+# Author: JOY and IOANNA new edit after pr
 
 class FirstClass:
     def __init__(self):
