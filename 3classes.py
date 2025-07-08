@@ -1,6 +1,6 @@
 class FirstClass:
     def __init__(self):
-        print("This is the First Class"
+        print("This is the First Class edited from ARTEMIS after branch creation"
 
 class SecondClass:
     def __init__(self):
