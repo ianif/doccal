@@ -1,6 +1,8 @@
+# Author: JOY
+
 class FirstClass:
     def __init__(self):
-        print("This is the First Class edited from ARTEMIS after branch creation"
+        print("This is the First Class"
 
 class SecondClass:
     def __init__(self):
