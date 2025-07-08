@@ -1,4 +1,4 @@
-# Author: JOY
+# Author: JOY and IOANNA
 
 class FirstClass:
     def __init__(self):
