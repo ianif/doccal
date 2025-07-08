@@ -21,7 +21,7 @@ def book():
         return jsonify({"status": "error", "message": "This slot is already booked."})
     else:
         appointments[key] = True
-        return jsonify({"status": "success", "message": "Appointment booked successfully!"})
+        return jsonify({"status": "success", "message": "Appointment booked successfully! alalalala"})
 
 if __name__ == '__main__':
     app.run(debug=True)
