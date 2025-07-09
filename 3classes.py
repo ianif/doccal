@@ -1,10 +1,14 @@
 # Author: JOY and IOANNA
 
 class FirstClass:
+    __slots__ = ()  # Use slots to reduce memory footprint
+
     def __init__(self):
         print("This is the First Class")
 
 class SecondClass:
+    __slots__ = ()  # Use slots to reduce memory footprint
+
     def __init__(self):
         print("This is the Second Class")
         
