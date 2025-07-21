@@ -1,6 +1,7 @@
 # Author: JOY
 
 from flask import Flask, render_template, request, jsonify
+from utils import is_appointment_available, add_appointment, format_response
 
 app = Flask(__name__)
 
@@ -18,13 +19,12 @@ def book():
     time = data['time']
     doctor = data['doctor']
     who_is_this_guy = data['who_is_this_guy']
-    key = (date, time, doctor, who_is_this_guy)
-
-    if key in appointments:
-        return jsonify({"status": "error", "message": "This slot is already booked."})
+    
+    if not is_appointment_available(appointments, date, time, doctor, who_is_this_guy):
+        return jsonify(format_response("error", "This slot is already booked."))
     else:
-        appointments.add(key)
-        return jsonify({"status": "success", "message": "Appointment booked successfully! new pr"})
+        add_appointment(appointments, date, time, doctor, who_is_this_guy)
+        return jsonify(format_response("success", "Appointment booked successfully!"))
 
 if __name__ == '__main__':
     app.run(debug=True, threaded=True)
