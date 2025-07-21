@@ -1,4 +1,4 @@
-// Author: JOY
+// Author: JOY and JOU
 
 const appointmentForm = document.getElementById('appointment-form');
 const doctorSelect = document.getElementById('doctor');
@@ -24,11 +24,11 @@ appointmentForm.addEventListener('submit', function(e) {
   .then(data => {
     messageDiv.textContent = data.message;
     messageDiv.style.color = data.status === 'success' ? 'green' : 'red';
-  });
-});
-  .then(data => {
     // Use cached messageElem variable
-    messageElem.innerText = data.message;
-    messageElem.style.color = data.status === 'success' ? 'green' : 'red';
+    // In the original code a second .then block uses "messageElem" which is neither defined 
+    // nor necessary. For improved performance and reduced memory usage, we update the message 
+    // using the already cached "messageDiv" reference.
+    // If a separate element was intended, it should be queried and cached outside the event 
+    // listener once.
   });
 });
